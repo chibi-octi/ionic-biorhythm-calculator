@@ -9,7 +9,7 @@ import {
   IonDatetime
 } from '@ionic/react';
 import React, { useState } from 'react';
-import Card from './components/Card';
+import BiorhythmCard from './components/BiorhythmCard';
 
 function App() {
   const [birthDate, setBrithDate] = useState('');
@@ -23,7 +23,9 @@ function App() {
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">
-
+        {birthDate &&
+            <BiorhythmCard birthDate = {birthDate} targetDate={targetDate}/>
+        }
         <IonItem>
           <IonLabel position="floating">Date of birth:</IonLabel>
           <IonDatetime displayFormat="D MMM YYYY"
@@ -31,7 +33,7 @@ function App() {
             onIonChange={(event) => setBrithDate(event.detail.value)}
           />
         </IonItem>
-        <Card targetDate={targetDate}/>
+        
         
       </IonContent>
     </IonApp>
